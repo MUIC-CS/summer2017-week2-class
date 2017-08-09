@@ -46,9 +46,8 @@ def edit_phonerecord():
     return redirect(url_for('index'))
 
 
-@app.route('/lovers/<id>')
-def lovers(id):
-    fsh = FriendShipRepo.find_friend(id, True)
+def love_hate(id, love):
+    fsh = FriendShipRepo.find_friend(id, love)
     left = [x.left_id for x in fsh]
     right = [x.right_id for x in fsh]
     all_id = filter(lambda x: x != id, left + right)
@@ -58,8 +57,19 @@ def lovers(id):
     return render_template('list_people.html',
                            people=people,
                            me=me,
-                           relationship='love'
+                           relationship='love' if love else 'hate'
                            )
+
+
+@app.route('/lovers/<id>')
+def lovers(id):
+    return love_hate(id, True)
+
+
+@app.route('/haters/<id>')
+def haters(id):
+    return love_hate(id, False)
+
 
 app.run(debug=True)
 
