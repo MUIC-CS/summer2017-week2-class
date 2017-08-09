@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <form action="/edit/{{obj.id|urlencode}}" method="POST">
+      Edit user {{obj.id}}
+      <br />
+      <input type="hidden" name="id" value="{{obj.id}}" />
+      Name
+      <input type="text" name="name" value="{{obj.name}}" />
+      <br />
+      Phonenumber
+      <input type="text" name="phoneno" value="{{obj.phoneno}}" />
+      <br />
+      <input type="submit" value="Edit"/ />
+    </form>
+  </body>
+</html>
