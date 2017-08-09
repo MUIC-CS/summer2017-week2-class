@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    These people {{relationship}} {{me.name}}
+    <ul>
+    {% for pr in people %}
+      <li>
+         {{pr.name}} - {{pr.phoneno}}
+         <a href="/haters/{{pr.id}}">Haters</a>
+         <a href="/lovers/{{pr.id}}">Lovers</a>
+         <a href="/edit/{{pr.id}}">Edit</a>
+         <form action="/remove" method="POST">
+           <input type="hidden" value="{{pr.id}}" name="id" />
+           <input type="submit" value="Remove" />
+         </form>
+      </li>
+    {% endfor %}
+    </ul>
+
+  </body>
+</html>
