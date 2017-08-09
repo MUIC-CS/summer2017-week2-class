@@ -39,10 +39,8 @@ class PhoneRecordRepo:
                 """
             )
             rs = cur.fetchall()
-            ret = []
-            for row in rs:
-                ret.append(PhoneRecord.from_dict(row))
-            return ret
+            return [PhoneRecord.from_dict(row) for row in rs]
+
 
 if __name__ == '__main__':
     PhoneRecordRepo.create_table()
