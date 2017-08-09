@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from phonerecord import PhoneRecordRepo
+from flask import Flask, render_template, request, redirect, url_for
+from phonerecord import PhoneRecordRepo, PhoneRecord
 
 app = Flask('phonebook')
 
@@ -8,6 +8,15 @@ app = Flask('phonebook')
 def index():
     prs = PhoneRecordRepo.find_all()
     return render_template('index.html', prs=prs)
+
+
+@app.route('/', methods=["POST"])
+def add():
+    name = request.form['name']
+    phoneno = request.form['phoneno']
+    pr = PhoneRecord(None, name, phoneno)
+    PhoneRecordRepo.add(pr)
+    return redirect(url_for('index'))
 
 
 app.run(debug=True)
