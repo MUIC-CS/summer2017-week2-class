@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  </head>
-  <body>
+{% extends "layout.html" %}
 
+{% block content %}
     <form action="/" method="POST">
       <input type="text" name="name" placeholder="Name"/>
       <input type="text" name="phoneno" placeholder="Phone Number"/>
@@ -23,6 +20,4 @@
       </li>
     {% endfor %}
     </ul>
-
-  </body>
-</html>
+{% endblock %}

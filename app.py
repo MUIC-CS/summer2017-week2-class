@@ -50,7 +50,7 @@ def love_hate(id, love):
     fsh = FriendShipRepo.find_friend(id, love)
     left = [x.left_id for x in fsh]
     right = [x.right_id for x in fsh]
-    all_id = filter(lambda x: x != id, left + right)
+    all_id = filter(lambda x: str(x) != str(id), left + right)
     all_id = list(set(all_id))  # unique
     people = [PhoneRecordRepo.find_by_id(x) for x in all_id]
     me = PhoneRecordRepo.find_by_id(id)

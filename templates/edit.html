@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  </head>
-  <body>
+{% extends "layout.html" %}
+
+{% block content %}
     <form action="/edit" method="POST">
       Edit user {{obj.id}}
       <br />
@@ -15,5 +13,4 @@
       <br />
       <input type="submit" value="Edit"/ />
     </form>
-  </body>
-</html>
+{% endblock %}
