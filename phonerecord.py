@@ -87,6 +87,18 @@ class PhoneRecordRepo:
             )
             cur.connection.commit()
 
+    @classmethod
+    def save(cls, obj):
+        with get_cursor() as cur:
+            cur.execute(
+                """
+                UPDATE phonerecords
+                SET name=%s phoneno=%s
+                WHERE id=%s
+                """,
+                (obj.name, obj.phoneno, obj.id)
+            )
+            cur.connection.commit()
 
 if __name__ == '__main__':
     PhoneRecordRepo.create_table()

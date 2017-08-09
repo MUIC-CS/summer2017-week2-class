@@ -31,6 +31,18 @@ def edit(id):
     obj = PhoneRecordRepo.find_by_id(id)
     return render_template('edit.html', obj=obj)
 
+
+@app.route('/edit')
+def edit_phonerecord():
+    id = request.form['id']
+    name = request.form['name']
+    phoneno = request.form['phoneno']
+
+    obj = PhoneRecordRepo.find_by_id(id)
+    obj.name = name
+    obj.phoneno = phoneno
+    PhoneRecordRepo.save(obj)
+
 app.run(debug=True)
 
 #
