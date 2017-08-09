@@ -14,6 +14,8 @@ if __name__ == '__main__':
     PhoneRecordRepo.add(pizza)
     PhoneRecordRepo.add(chester)
 
+    FriendShipRepo.create_table()
+
     FriendShipRepo.add_friendship(kfc.id, pizza.id, True)
     FriendShipRepo.add_friendship(kfc.id, chester.id, False)
     FriendShipRepo.add_friendship(chester.id, mcdonald.id, False)
