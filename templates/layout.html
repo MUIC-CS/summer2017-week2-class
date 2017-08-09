@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <body>
+    {% block content %}
+    {% endblock %}
+    <div id="footer">
+      <a href="/">Back to Main</a>
+      {% block footer %}
+      &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
+      {% endblock %}
+    </div>
+  </body>
+</html>
