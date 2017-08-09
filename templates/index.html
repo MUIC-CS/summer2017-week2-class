@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <ul>
+
+    {% for pr in prs %}
+      <li>
+         {{pr.name}} - {{pr.phoneno}}
+      </li>
+    {% endfor %}
+    </ul>
+
+  </body>
+</html>
