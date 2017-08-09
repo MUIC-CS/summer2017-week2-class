@@ -22,9 +22,7 @@ def add():
 @app.route('/remove', methods=["POST"])
 def remove():
     id = request.form['id']
-    ....  # fill this
-    ....  # DELETE FROM phonerecords WHERE id=99999
-    ....
+    PhoneRecordRepo.delete_by_id(id)
     return redirect(url_for('index'))
 
 

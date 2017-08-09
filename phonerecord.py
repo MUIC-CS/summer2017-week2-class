@@ -64,6 +64,17 @@ class PhoneRecordRepo:
             cur.connection.commit()
             return obj
 
+    @classmethod
+    def delete_by_id(cls, id):
+        with get_cursor() as cur:
+            cur.execute(
+                """
+                DELETE FROM phonerecords WHERE id=%s
+                """,
+                (id, )
+            )
+            cur.connection.commit()
+
 
 if __name__ == '__main__':
     PhoneRecordRepo.create_table()
