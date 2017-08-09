@@ -12,6 +12,13 @@ class PhoneRecord:
     def from_dict(cls, d):
         return PhoneRecord(d['id'], d['name'], d['phoneno'])
 
+    def __repr__(self):
+        return "<PhoneRecord id={id} name={name} phoneno={phoneno}>".format(
+            id=self.id,
+            name=self.name,
+            phoneno=self.phoneno
+        )
+
 
 class PhoneRecordRepo:
 
@@ -60,6 +67,21 @@ class PhoneRecordRepo:
 
 if __name__ == '__main__':
     PhoneRecordRepo.create_table()
+
+    kfc = PhoneRecord(None, 'KFC', '1150')
+    mcdonald = PhoneRecord(None, 'McDonald', '1711')
+    pizza = PhoneRecord(None, 'Pizza Company', '1112')
+    chester = PhoneRecord(None, 'Chester Grill', '1145')
+
+    PhoneRecordRepo.add(kfc)
+    PhoneRecordRepo.add(mcdonald)
+    PhoneRecordRepo.add(pizza)
+    PhoneRecordRepo.add(chester)
+
+    all = PhoneRecordRepo.find_all()
+    print all
+
+
 #####
 ####
 ####
