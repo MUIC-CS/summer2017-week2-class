@@ -49,6 +49,18 @@ class PhoneRecordRepo:
             return [PhoneRecord.from_dict(row) for row in rs]
 
     @classmethod
+    def find_by_id(cls, id):
+        with get_cursor() as cur:
+            cur.execute(
+                """
+                SELECT * FROM phonerecords WHERE id=%s
+                """,
+                (id,)
+            )
+            rs = cur.fetchone()
+            return PhoneRecord.from_dict(rs)
+
+    @classmethod
     def add(cls, obj):
         with get_cursor() as cur:
             cur.execute(

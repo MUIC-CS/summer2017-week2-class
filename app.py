@@ -26,6 +26,11 @@ def remove():
     return redirect(url_for('index'))
 
 
+@app.route('/edit/<id>')
+def edit():
+    obj = PhoneRecordRepo
+
+
 app.run(debug=True)
 
 #
