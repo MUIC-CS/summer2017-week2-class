@@ -32,7 +32,7 @@ def edit(id):
     return render_template('edit.html', obj=obj)
 
 
-@app.route('/edit')
+@app.route('/edit', methods=["POST"])
 def edit_phonerecord():
     id = request.form['id']
     name = request.form['name']
@@ -42,7 +42,7 @@ def edit_phonerecord():
     obj.name = name
     obj.phoneno = phoneno
     PhoneRecordRepo.save(obj)
-    return redirect(url_for('edit', id=id))
+    return redirect(url_for('index'))
 
 app.run(debug=True)
 

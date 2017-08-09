@@ -93,7 +93,7 @@ class PhoneRecordRepo:
             cur.execute(
                 """
                 UPDATE phonerecords
-                SET name=%s phoneno=%s
+                SET name=%s, phoneno=%s
                 WHERE id=%s
                 """,
                 (obj.name, obj.phoneno, obj.id)
