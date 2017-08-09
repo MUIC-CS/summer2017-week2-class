@@ -3,15 +3,15 @@ from db import get_cursor
 
 class FriendShip:
 
-    def __init__(self, id, left, right, love):
+    def __init__(self, id, left_id, right_id, love):
         self.id = id
-        self.left = left
-        self.right = right
+        self.left_id = left_id
+        self.right_id = right_id
         self.love = love
 
     @classmethod
     def from_dict(cls, d):
-        return FriendShip(d['id'], d['left'], d['right'], d['love'])
+        return FriendShip(d['id'], d['left_id'], d['right_id'], d['love'])
 
 
 class FriendShipRepo:
@@ -24,8 +24,8 @@ class FriendShipRepo:
                 DROP TABLE IF EXISTS friendship;
                 CREATE TABLE friendship (
                     id SERIAL NOT NULL PRIMARY KEY,
-                    left INTEGER NOT NULL,
-                    right INTEGER NOT NULL,
+                    left_id INTEGER NOT NULL,
+                    right_id INTEGER NOT NULL,
                     love BOOLEAN NOT NULL
                 );
                 """
@@ -37,7 +37,7 @@ class FriendShipRepo:
         with get_cursor() as cur:
             cur.execute(
                 """
-                INSERT INTO friendship(left, right, love)
+                INSERT INTO friendship(left_id, right_id, love)
                 VALUES( %s, %s, %s)
                 RETURNING id
                 """
@@ -52,7 +52,7 @@ class FriendShipRepo:
                 """
                 SELECT *
                 FROM friendship
-                WHERE (left=%s OR right=%s) and love=%s
+                WHERE (left_id=%s OR right_id=%s) and love=%s
                 """,
                 (person, person, love)
             )
