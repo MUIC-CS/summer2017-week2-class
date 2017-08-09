@@ -42,6 +42,7 @@ def edit_phonerecord():
     obj.name = name
     obj.phoneno = phoneno
     PhoneRecordRepo.save(obj)
+    return redirect(url_for('edit', id=id))
 
 app.run(debug=True)
 
