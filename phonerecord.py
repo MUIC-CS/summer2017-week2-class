@@ -100,22 +100,6 @@ class PhoneRecordRepo:
             )
             cur.connection.commit()
 
-if __name__ == '__main__':
-    PhoneRecordRepo.create_table()
-
-    kfc = PhoneRecord(None, 'KFC', '1150')
-    mcdonald = PhoneRecord(None, 'McDonald', '1711')
-    pizza = PhoneRecord(None, 'Pizza Company', '1112')
-    chester = PhoneRecord(None, 'Chester Grill', '1145')
-
-    PhoneRecordRepo.add(kfc)
-    PhoneRecordRepo.add(mcdonald)
-    PhoneRecordRepo.add(pizza)
-    PhoneRecordRepo.add(chester)
-
-    all = PhoneRecordRepo.find_all()
-    print all
-
 
 #####
 ####

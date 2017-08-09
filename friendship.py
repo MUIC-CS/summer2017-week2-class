@@ -57,13 +57,3 @@ class FriendShipRepo:
                 (person, person, love)
             )
             return [FriendShip.from_dict(row) for row in cur.fetchall()]
-
-    #
-    #
-    #
-    #
-    #
-    #
-    #
-    #
-    #
