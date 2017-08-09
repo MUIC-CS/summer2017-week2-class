@@ -21,7 +21,7 @@ class FriendShipRepo:
         with get_cursor() as cur:
             cur.execute(
                 """
-                DROP IF EXISTS friendship;
+                DROP TABLE IF EXISTS friendship;
                 CREATE TABLE friendship (
                     id SERIAL NOT NULL PRIMARY KEY,
                     left INTEGER NOT NULL,
