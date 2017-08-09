@@ -13,6 +13,7 @@
     {% for pr in prs %}
       <li>
          {{pr.name}} - {{pr.phoneno}}
+         <a href="/edit/{{pr.id}}">Edit</a>
          <form action="/remove" method="POST">
            <input type="hidden" value="{{pr.id}}" name="id" />
            <input type="submit" value="Remove" />
