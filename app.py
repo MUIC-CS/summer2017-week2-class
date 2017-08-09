@@ -19,4 +19,21 @@ def add():
     return redirect(url_for('index'))
 
 
+@app.route('/remove', methods=["POST"])
+def remove():
+    id = request.form['id']
+    ....  # fill this
+    ....  # DELETE FROM phonerecords WHERE id=99999
+    ....
+    return redirect(url_for('index'))
+
+
 app.run(debug=True)
+
+#
+#
+#
+#
+#
+#
+#

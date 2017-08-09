@@ -14,7 +14,7 @@
       <li>
          {{pr.name}} - {{pr.phoneno}}
          <form action="/remove" method="POST">
-           <input type="hidden" value="{{pr.id}}" />
+           <input type="hidden" value="{{pr.id}}" name="id" />
            <input type="submit" value="Remove" />
          </form>
       </li>
