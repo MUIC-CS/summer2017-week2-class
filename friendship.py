@@ -38,9 +38,10 @@ class FriendShipRepo:
             cur.execute(
                 """
                 INSERT INTO friendship(left_id, right_id, love)
-                VALUES( %s, %s, %s)
+                VALUES(%s, %s, %s)
                 RETURNING id
-                """
+                """,
+                (left, right, love)
             )
             cur.connection.commit()
             return cur.fetchone()['id']
