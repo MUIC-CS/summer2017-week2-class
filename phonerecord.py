@@ -41,6 +41,22 @@ class PhoneRecordRepo:
             rs = cur.fetchall()
             return [PhoneRecord.from_dict(row) for row in rs]
 
+    @classmethod
+    def add(cls, obj):
+        with get_cursor() as cur:
+            cur.execute(
+                """
+                INSERT INTO phonerecords(name, phoneno)
+                VALUES(%s, %s)
+                RETURNING id
+                """,
+                (obj.name, obj.phoneno)
+            )
+            rs = cur.fetchone()
+            obj.id = rs['id']
+            cur.connection.commit()
+            return obj
+
 
 if __name__ == '__main__':
     PhoneRecordRepo.create_table()
