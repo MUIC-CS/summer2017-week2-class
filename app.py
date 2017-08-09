@@ -54,8 +54,12 @@ def lovers(id):
     all_id = filter(lambda x: x != id, left + right)
     all_id = list(set(all_id))  # unique
     people = [PhoneRecordRepo.find_by_id(x) for x in all_id]
-    print people
-    return "ok"
+    me = PhoneRecordRepo.find_by_id(id)
+    return render_template('list_people.html',
+                           people=people,
+                           me=me,
+                           relationship='love'
+                           )
 
 app.run(debug=True)
 
